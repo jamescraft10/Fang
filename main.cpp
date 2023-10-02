@@ -6,14 +6,14 @@
 using namespace std;
 
 bool CheckIfExtension(string::size_type n, string const& s, int Length) {
-    if (string::npos == n) {
-        cout << "\nThis file or folder does not contain \".fa\"";
+    if(string::npos == n) {
+        cout << "\nThis file does not contain \".fa\"";
         return 1;
     } else {
-        if(Length - 2 == n) {
+        if(Length - 3 == n) {
             return 0;
         } else {
-            cout << "\nThis file or folder does not contain \".fa\"";
+            cout << "\nThis file does not contain \".fa\"";
             return 1;
         }
     }
