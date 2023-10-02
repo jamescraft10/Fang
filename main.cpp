@@ -33,7 +33,9 @@ int main(int argc, char* argv[]) {
 
     std::cout << FileContents << std::endl;
 
+    // Lexical Analysis
     for(int i = 0; i <= FileContents.length(); ++i) {
+        // Return
         if(FileContents[i] == 'r' && FileContents[i+1] == 'e' && FileContents[i+2] == 't' && FileContents[i+3] == 'u' && FileContents[i+4] == 'r' && FileContents[i+5] == 'n' && FileContents[i+6] == ' ') {
             std::cout << "RETURN" << std::endl;
             int Value = FileContents[i+7] - 48; // The code for '0' is 48 and it goes up 0-9 so we subtract 48
@@ -45,6 +47,10 @@ int main(int argc, char* argv[]) {
                 std::cout << "SEMI" << std::endl;
             }
             i += 8;
+        }
+        // let name: int = 5;
+        if(FileContents[i] == 'l' && FileContents[i+1] == 'e' && FileContents[i+2] == 't' && FileContents[i+3] == ' ') {
+            // TODO
         }
     }
 
