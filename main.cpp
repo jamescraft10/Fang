@@ -18,9 +18,14 @@ bool CheckIfExtension(std::string::size_type n, std::string const& s, int Length
 }
 
 int main(int argc, char* argv[]) {
+    if(argv[1] == 0) {
+        std::cout << "Must pass in a file" << std::endl;
+        return EXIT_FAILURE;
+    }
+
     std::string FilePath = argv[1];
     if(CheckIfExtension(FilePath.find(".fa"), FilePath, FilePath.length())) {
-        return 1;
+        return EXIT_FAILURE;
     }
 
     std::string FileContents;
@@ -33,26 +38,25 @@ int main(int argc, char* argv[]) {
 
     std::cout << FileContents << std::endl;
 
-    // Lexical Analysis
+    std::string Output = "";
     for(int i = 0; i <= FileContents.length(); ++i) {
         // Return
         if(FileContents[i] == 'r' && FileContents[i+1] == 'e' && FileContents[i+2] == 't' && FileContents[i+3] == 'u' && FileContents[i+4] == 'r' && FileContents[i+5] == 'n' && FileContents[i+6] == ' ') {
-            std::cout << "RETURN" << std::endl;
-            int Value = FileContents[i+7] - 48; // The code for '0' is 48 and it goes up 0-9 so we subtract 48
-            std::cout << Value << std::endl;
-            if(FileContents[i+8] != ';') {
-                std::cout << "Expected \';\'" << std::endl;
-                return 1;
-            } else {
-                std::cout << "SEMI" << std::endl;
+            Output += "return ";
+            int j = 6;
+            while(true) {
+                ++j;
+                if(FileContents[i+j] != ';') {
+                    Output += FileContents[i+j];
+                } else if(FileContents[i+j] == ';') {
+                    break;
+                }
             }
-            i += 8;
-        }
-        // let name: int = 5;
-        if(FileContents[i] == 'l' && FileContents[i+1] == 'e' && FileContents[i+2] == 't' && FileContents[i+3] == ' ') {
-            // TODO
+            Output += ";";
         }
     }
 
-    return 0;
+    std::cout << Output << std::endl;
+
+    return EXIT_SUCCESS;
 }
