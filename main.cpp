@@ -36,8 +36,6 @@ int main(int argc, char* argv[]) {
     }
     Program.close();
 
-    std::cout << FileContents << std::endl;
-
     std::string Output = "";
     for(int i = 0; i <= FileContents.length(); ++i) {
         // Return
@@ -75,7 +73,6 @@ int main(int argc, char* argv[]) {
     std::ofstream OutputFile(Name);
     OutputFile << "#include <stdio.h>\nint main() {\n" << Output << "\n}";
     OutputFile.close();
-
     std::cout << Output << std::endl;
 
     return EXIT_SUCCESS;
